@@ -65,7 +65,7 @@ You're absolutely right! I apologize for the oversight. I've updated the instruc
     docker-compose exec backend npm run db:migrate
     ```
 
-**## Development Environment**
+**## Development Environment(optional)**
 
 **Frontend:**
 
@@ -86,12 +86,24 @@ You're absolutely right! I apologize for the oversight. I've updated the instruc
 
 **Backend:**
 
-1. **Install dependencies:**
+1.  **Install dependencies:**
 
     ```bash
     npm i
     ```
 
-2. **Start backend development server (optional):**
+2.  **Start backend development server (optional):**
 
-    If your backend service requires a separate development server, you can start it using a command specific to your framework (e.g., `npm run dev` for Express.js). However, Docker Compose should handle running the backend container in development mode by default.
+    ````bash
+        cd backend
+        npm run watch
+        ```
+
+    ````
+
+3.  **Run db migrations (optional):**
+
+        ```bash
+        cd backend
+        npm run db:migrate
+        ```
