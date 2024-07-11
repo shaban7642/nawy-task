@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+    frontend:
+        build:
+            context: ./frontend
+        ports:
+            - '3000:3000'
+        depends_on:
+            - backend
+        environment:
+            - NODE_ENV=local
+            - API_URL=http://backend:4000
+            - NEXT_PUBLIC_API_URL=http://backend:4000
+
+    backend:
+        build:
+            context: ./backend
+        ports:
+            - '4000:4000'
+        depends_on:
+            - db
+        environment:
+            - ENV=local
+            - NODE_ENV=local
+            - PORT=4000
+            - WHITELIST_DOMAINS=http://localhost:3000,http://localhost:8080
+            - POSTGRES_USERNAME=shaban
+            - POSTGRES_PASSWORD=admin
+            - POSTGRES_DATABASE=zadul
+            - POSTGRES_HOST=db # Use service name here
+            - DB_HOST=db # Use service name here
+
+    db:
+        image: postgres:13
+        ports:
+            - '5433:5432' # Map host port 5433 to container port 5432
+        environment:
+            POSTGRES_USER: shaban
+            POSTGRES_PASSWORD: admin
+            POSTGRES_DB: zadul
+        volumes:
+            - db_data:/var/lib/postgresql/data
+
+volumes:
+    db_data:
