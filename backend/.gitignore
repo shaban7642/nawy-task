@@ -41,17 +41,17 @@ dump.rdb
 .yarn-integrity
 
 # dotenv environment variables file
-.env
-.env.template
-.env.test
-.**.env
-.env.production
-.env.staging
-!.env.example
-.env.deploy
-.env.deploy.*
-!.env.deploy.example
-!.env.deploy.example.*
+# .env
+# .env.template
+# .env.test
+# .**.env
+# .env.production
+# .env.staging
+# !.env.example
+# .env.deploy
+# .env.deploy.*
+# !.env.deploy.example
+# !.env.deploy.example.*
 
 # service files
 service.yaml
